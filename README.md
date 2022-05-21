@@ -1,2 +1,2 @@
 # PRINTF
-## Collaboration test
+## Collaborative test
