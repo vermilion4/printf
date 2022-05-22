@@ -45,5 +45,5 @@ sum++;
 i++;
 }
 va_end(args);
-return (sum - 1);
+return (sum);
 }
