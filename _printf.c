@@ -8,42 +8,51 @@
  */
 int _printf(const char *format, ...)
 {
-va_list args;
-int i = 0;
-int sum = 0;
+    const char *p;
+    va_list args;
 
-va_start(args, format);
+    register int count = 0;
 
-while (format[i] != '\0')
-{
-if (format[i] != '%')
-{
-_putchar(format[i]);
-sum++;
-}
-else
-{
-if (format[i + 1] == 'c')
-{
-i++;
-print_char(args);
-sum++;
-}
-else if (format[i + 1] == 's')
-{
-i++;
-print_string(args);
-sum += _strlen(args);
-}
-else if (format[i + 1] == '%')
-{
-i++;
-_putchar('%');
-sum++;
-}
-}
-i++;
-}
-va_end(args);
-return (sum);
+    va_start(args, format);
+    if (!format || (format[0] == '%' && !format[1]))
+        return (-1);
+    if (format[0] == '%' && format[1] == ' ' && !format[2])
+        return (-1);
+    for (p = format; *p; p++)
+    {
+        if (*p == '%')
+        {
+            p++;
+            if (*p == '%')
+            {
+                count += _putchar('%');
+                continue;
+            }
+            else if (*p == 'c')
+            {
+                count += print_char(args);
+                continue;
+            }
+            else if (*p == 's')
+            {
+                count += print_string(args);
+                continue;
+            }
+            else if (*p == '\0')
+            {
+                break;
+            }
+            else
+            {
+                count += _putchar('%');
+                count += _putchar(*p);
+                continue;
+            }
+        }
+        else
+            count += _putchar(*p);
+    }
+    _putchar(-1);
+    va_end(args);
+    return (count);
 }
