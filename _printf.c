@@ -35,7 +35,8 @@ continue;
 }
 else if (*p == 's')
 {
-count += print_string(args);
+print_string(args);
+count += _strlen(args);
 continue;
 }
 else if (*p == '\0')
