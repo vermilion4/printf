@@ -26,14 +26,15 @@ else
 if (format[i + 1] == 'c')
 {
 print_char(args);
-sum++;
+sum ++;
 i++;
 }
 else if (format[i + 1] == 's')
 {
 i++;
-print_string(args);
 sum += _strlen(args);
+print_string(args);
+
 }
 else if (format[i + 1] == '%')
 {

@@ -9,14 +9,16 @@
  */
 int main(void)
 {
-    int n;
+    int n, b;
 
-    n = _printf("Character:[%c]\n", 'H');
-    printf("Character:[%c]\n", 'H');
-    printf("%d\n", n);
+    n = _printf("%c\n", '\0');
+    b = printf("%c\n", '\0');
+    printf("n = %d\n", n);
+    printf("b = %d\n", b);
     n = _printf("String:[%s]\n", "I am a string !");
     printf("%d\n", n);
-    printf("String:[%s]\n", "I am a string !");
+    b = printf("String:[%s]\n", "I am a string !");
+    printf("b = %d\n", b);
     _printf("Percent:[%%]\n");
     printf("Percent:[%%]\n");
     printf("%d\n", n);
