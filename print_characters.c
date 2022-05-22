@@ -5,26 +5,27 @@
  * @c: character to print
  * Return: character
  */
-int print_char(va_list c)
+void print_char(va_list c)
 {
 char ch;
 ch = va_arg(c, int);
 _putchar(ch);
-return (1);
 }
 
 /**
  * print_string - prints a string
- * @s: string to print
+ * @str: string to print
  * Return: string
  */
 
-int print_string(va_list str)
+void print_string(va_list str)
 {
 char *s;
 
 s = va_arg(str, char *);
-if (!s)
-s = "(null)";
-return (_puts(s));
+while (*s)
+{
+_putchar(*s);
+s++;
+}
 }

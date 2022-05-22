@@ -14,32 +14,27 @@ int i;
 va_start(args, format);
 
 i = 0;
-while (format[i] != '\0')
+while (format[i])
 {
-if (format[i] == '%')
+if (format[i] != '%')
+_putchar(format[i]);
+else
 {
-i++;
-if (format[i] == 'c')
+if (format[i + 1] == 'c')
 {
 print_char(args);
+i++;
 }
-else if (format[i] == 's')
+else if (format[i + 1] == 's')
 {
+i++;
 print_string(args);
 }
-else if (format[i] == '%')
+else if (format[i + 1] == '%')
 {
+i++;
 _putchar('%');
 }
-else
-{
-_putchar('%');
-_putchar(format[i]);
-}
-}
-else
-{
-_putchar(format[i]);
 }
 i++;
 }
