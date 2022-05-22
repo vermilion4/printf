@@ -8,9 +8,9 @@
  */
 int print_char(va_list c, flags_t *f)
 {
-    (void)f;
-    _putchar(va_arg(c, int));
-    return (1);
+(void)f;
+_putchar(va_arg(c, int));
+return (1);
 }
 
 /**
@@ -22,18 +22,19 @@ int print_char(va_list c, flags_t *f)
 
 int print_string(va_list str, flags_t *f)
 {
-    char *s = va_arg(str, char *);
+char *s = va_arg(str, char *);
 
-    (void)f;
+(void)f;
 
-    if (!s)
-        s = "(null)";
-    return (_puts(s));
+if (!s)
+s = "(null)";
+return (_puts(s));
 }
 
 /**
  * print_percent - prints a percent sign
  * @c: character to print
+ * @f: flags
  * Return: character
  */
 
@@ -41,5 +42,5 @@ int print_percent(va_list c, flags_t *f)
 {
 (void)c;
 (void)f;
-return(_putchar('%'));
+return (_putchar('%'));
 }

@@ -12,7 +12,7 @@ return (write(1, &c, 1));
 
 /**
  * _puts - writes the string s to stdout
- * @s: The string to print
+ * @str: The string to print
  * Return: On success.
  */
 
