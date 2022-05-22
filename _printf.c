@@ -32,9 +32,9 @@ i++;
 else if (format[i + 1] == 's')
 {
 i++;
-sum += _strlen(args);
 print_string(args);
-
+sum += _strlen(args);
+sum++;
 }
 else if (format[i + 1] == '%')
 {
