@@ -4,8 +4,16 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "main.h"
-#include <stdio.h>
+/**
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
+ * Return: On success.
+ */
+int _putchar(char c)
+{
+write(1, &c, 1);
+return (0);
+}
 
 /**
  * _strlen - prints length of string
@@ -33,7 +41,8 @@ int print_char(va_list c)
 {
 char ch;
 ch = va_arg(c, int);
-return (write(1, &ch, 1));
+_putchar(ch);
+return (1);
 }
 
 /**
@@ -47,7 +56,9 @@ int print_string(va_list s)
 char *str;
 
 str = va_arg(s, char *);
-if (str == NULL)
-str = "(null)";
-return (write(1, str, _strlen(str)));
+
+for (; *str != '\0'; str++)
+_putchar(*str);
+
+return (1);
 }
