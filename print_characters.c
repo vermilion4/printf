@@ -52,6 +52,6 @@ return (i);
 
 int print_percent(va_list c)
 {
-_putchar('%');
-return (1);
+(void)c;
+return(_putchar('%'));
 }
