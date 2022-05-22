@@ -7,9 +7,7 @@
  */
 int print_char(va_list c)
 {
-char ch;
-ch = va_arg(c, int);
-_putchar(ch);
+_putchar(va_arg(c, int));
 return (1);
 }
 
@@ -21,16 +19,11 @@ return (1);
 
 int print_string(va_list str)
 {
-char *s;
+char *s = va_arg(str, char *);
 
-s = va_arg(str, char *);
-
-while (*s)
-{
-_putchar(*s);
-s++;
-}
-return (1);
+if (!s)
+s = "(null)";
+return (_puts(s));
 }
 
 /**
@@ -49,4 +42,16 @@ while (s[i] != '\0')
 i++;
 }
 return (i);
+}
+
+/**
+ * print_percent - prints a percent sign
+ * @c: character to print
+ * Return: character
+ */
+
+int print_percent(va_list c)
+{
+_putchar('%');
+return (1);
 }

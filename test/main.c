@@ -11,6 +11,8 @@ int main(void)
 {
     int n, b;
 
+    _printf("character: %c\n", 'c');
+    printf("character: %c\n", 'c');
     n = _printf("String:[%s]\n", "I am a string !");
     printf("%d\n", n);
     b = printf("String:[%s]\n", "I am a string !");

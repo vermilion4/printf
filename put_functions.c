@@ -9,3 +9,18 @@ int _putchar(char c)
 {
 return (write(1, &c, 1));
 }
+
+/**
+ * _puts - writes the string s to stdout
+ * @s: The string to print
+ * Return: On success.
+ */
+
+int _puts(char *str)
+{
+int i;
+
+for (i = 0; str[i] != '\0'; i++)
+_putchar(str[i]);
+return (i);
+}
