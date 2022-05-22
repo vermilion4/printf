@@ -16,6 +16,23 @@ return (0);
 }
 
 /**
+ * _puts - writes the string s to stdout
+ * @s: The string to print
+ * Return: On success.
+ */
+
+int _puts(char *s)
+{
+int i;
+
+for (i = 0; s[i] != '\0'; i++)
+{
+_putchar(s[i]);
+}
+return (i);
+}
+
+/**
  * _strlen - prints length of string
  *
  * @s: pointer
@@ -51,14 +68,14 @@ return (1);
  * Return: string
  */
 
-int print_string(va_list s)
+int print_string(va_list str)
 {
-char *str;
+char *s;
 
-str = va_arg(s, char *);
-
-for (; *str != '\0'; str++)
-_putchar(*str);
-
-return (1);
+s = va_arg(str, char *);
+if (s == NULL)
+{
+s = "(null)";
+}
+return (_puts(s));
 }

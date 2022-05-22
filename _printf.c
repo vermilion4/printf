@@ -33,7 +33,7 @@ f[0](args);
 else if (format[i] == 's')
 f[1](args);
 else if (format[i] == '%')
-write(1, "%", 1);
+_putchar('%');
 else
 {
 write(1, "%", 1);

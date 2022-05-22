@@ -5,6 +5,7 @@
 
 int _printf(const char *format, ...);
 int _putchar(char c);
+int _puts(char *s);
 int _strlen(char *s);
 int print_char(va_list c);
 int print_string(va_list s);
