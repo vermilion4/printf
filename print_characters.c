@@ -1,8 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
 #include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
 
 /**
  * _putchar - writes the character c to stdout
@@ -11,8 +9,7 @@
  */
 int _putchar(char c)
 {
-write(1, &c, 1);
-return (0);
+return (write(1, &c, 1));
 }
 
 /**
@@ -73,9 +70,7 @@ int print_string(va_list str)
 char *s;
 
 s = va_arg(str, char *);
-if (s == NULL)
-{
+if (!s)
 s = "(null)";
-}
 return (_puts(s));
 }

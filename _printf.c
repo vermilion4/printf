@@ -1,9 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
-#include <stdio.h>
 #include <unistd.h>
-#include <string.h>
-#include <stdlib.h>
 
 /**
  * _printf - produces output according to a format
@@ -14,11 +11,10 @@ int _printf(const char *format, ...)
 {
 va_list args;
 int i;
-int (*f[3])(va_list);
+int (*f[2])(va_list);
 
 f[0] = &print_char;
 f[1] = &print_string;
-f[2] = NULL;
 
 va_start(args, format);
 i = 0;
