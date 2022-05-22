@@ -35,7 +35,7 @@ return (1);
 
 /**
  * print_percent - prints a percent sign
- * @c: character to print
+ * @l: character to print
  * @f: flags
  * Return: character
  */
