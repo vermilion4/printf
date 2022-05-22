@@ -11,40 +11,43 @@ int _printf(const char *format, ...)
 va_list args;
 int i, k;
 char *str;
+int sum = 0;
 
 va_start(args, format);
 
 i = 0;
-while (format[i])
+while (format[i] != '\0')
 {
 if (format[i] != '%')
+{
 _putchar(format[i]);
+sum++;
+}
 else
 {
 if (format[i + 1] == 'c')
 {
-_putchar(va_arg(args, int));
+print_char(args);
+sum++;
 i++;
 }
 else if (format[i + 1] == 's')
 {
 i++;
-str = va_arg(args, char *);
-k = 0;
-while (str[k])
-{
-_putchar(str[k]);
-k++;
-}
+print_string(args);
+sum += _strlen(args);
 }
 else if (format[i + 1] == '%')
 {
 i++;
 _putchar('%');
+sum++;
 }
 }
 i++;
 }
 va_end(args);
-return (i);
+--sum;
+return (sum);
 }
+
