@@ -9,13 +9,11 @@
 int _printf(const char *format, ...)
 {
 va_list args;
-int i, k;
-char *str;
+int i = 0;
 int sum = 0;
 
 va_start(args, format);
 
-i = 0;
 while (format[i] != '\0')
 {
 if (format[i] != '%')
@@ -50,4 +48,3 @@ va_end(args);
 --sum;
 return (sum);
 }
-
