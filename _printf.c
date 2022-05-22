@@ -1,21 +1,21 @@
 #include "main.h"
-#include <stdarg.h>
 
 /**
  * _printf - produces output according to a format
- * @format: format to print
- * Return: output
+ * @format: format string
+ * Return: number of characters printed
  */
+
 int _printf(const char *format, ...)
 {
 int (*pfunc)(va_list, flags_t *);
 const char *p;
-va_list args;
+va_list arguments;
 flags_t flags = {0, 0, 0};
 
 register int count = 0;
 
-va_start(args, format);
+va_start(arguments, format);
 if (!format || (format[0] == '%' && !format[1]))
 return (-1);
 if (format[0] == '%' && format[1] == ' ' && !format[2])
@@ -32,15 +32,15 @@ continue;
 }
 while (get_flag(*p, &flags))
 p++;
-pfunc = get_func(*p);
+pfunc = get_print(*p);
 count += (pfunc)
-? pfunc(args, &flags)
+? pfunc(arguments, &flags)
 : _printf("%%%c", *p);
 }
 else
 count += _putchar(*p);
 }
 _putchar(-1);
-va_end(args);
+va_end(arguments);
 return (count);
 }

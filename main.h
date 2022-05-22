@@ -1,42 +1,42 @@
-#ifndef MAIN_H_
-#define MAIN_H_
+#ifndef MAIN_H
+#define MAIN_H
 
-#include <stdarg.h>
 #include <stdlib.h>
+#include <stdarg.h>
 
 /**
- * struct flags - struct for flags
- * @plus: plus flag
- * @space: space flag
- * @hash: hash flag
+ * struct flags - struct containing flags to "turn on"
+ * when a flag specifier is passed to _printf()
+ * @plus: flag for the '+' character
+ * @space: flag for the ' ' character
+ * @hash: flag for the '#' character
  */
-
 typedef struct flags
 {
-int plus;
-int space;
-int hash;
+    int plus;
+    int space;
+    int hash;
 } flags_t;
 
 /**
- * struct spec_s - struct for specifiers
- * @c: specifier
- * @f: function pointer
+ * struct printHandler - struct to choose the right function depending
+ * on the format specifier passed to _printf()
+ * @c: format specifier
+ * @f: pointer to the correct printing function
  */
-
-typedef struct spec_s
+typedef struct printHandler
 {
-char c;
-int (*f)(va_list ap, flags_t *f);
-} spec_t;
+    char c;
+    int (*f)(va_list ap, flags_t *f);
+} ph;
 
 int _printf(const char *format, ...);
+int (*get_print(char s))(va_list, flags_t *);
+int get_flag(char s, flags_t *f);
+int print_string(va_list l, flags_t *f);
+int print_char(va_list l, flags_t *f);
 int _putchar(char c);
 int _puts(char *str);
-int print_char(va_list c, flags_t *f);
-int print_string(va_list str, flags_t *f);
-int print_percent(va_list c, flags_t *f);
-int (*get_func(char s))(va_list, flags_t *);
-int get_flag(char s, flags_t *f);
+int print_percent(va_list l, flags_t *f);
 
 #endif
