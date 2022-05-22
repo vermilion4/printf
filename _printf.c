@@ -9,7 +9,8 @@
 int _printf(const char *format, ...)
 {
 va_list args;
-int i;
+int i, k;
+char *str;
 
 va_start(args, format);
 
@@ -22,13 +23,19 @@ else
 {
 if (format[i + 1] == 'c')
 {
-print_char(args);
+_putchar(va_arg(args, int));
 i++;
 }
 else if (format[i + 1] == 's')
 {
 i++;
-print_string(args);
+str = va_arg(args, char *);
+k = 0;
+while (str[k])
+{
+_putchar(str[k]);
+k++;
+}
 }
 else if (format[i + 1] == '%')
 {
