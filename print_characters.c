@@ -3,45 +3,32 @@
 /**
  * print_char - prints a character
  * @c: character to print
+ * @f: flags
  * Return: character
  */
-int print_char(va_list c)
+int print_char(va_list c, flags_t *f)
 {
-_putchar(va_arg(c, int));
-return (1);
+    (void)f;
+    _putchar(va_arg(c, int));
+    return (1);
 }
 
 /**
  * print_string - prints a string
  * @str: string to print
+ * @f: flags
  * Return: string
  */
 
-int print_string(va_list str)
+int print_string(va_list str, flags_t *f)
 {
-char *s = va_arg(str, char *);
+    char *s = va_arg(str, char *);
 
-if (!s)
-s = "(null)";
-return (_puts(s));
-}
+    (void)f;
 
-/**
- * _strlen - returns the length of a string
- * @str: string to check
- * Return: length of string
- */
-int _strlen(va_list str)
-{
-char *s;
-int i = 0;
-
-s = va_arg(str, char *);
-while (s[i] != '\0')
-{
-i++;
-}
-return (i);
+    if (!s)
+        s = "(null)";
+    return (_puts(s));
 }
 
 /**
@@ -50,7 +37,7 @@ return (i);
  * Return: character
  */
 
-int print_percent(va_list c)
+int print_percent(va_list c, flags_t *f)
 {
 (void)c;
 return(_putchar('%'));

@@ -8,11 +8,12 @@
  */
 int _printf(const char *format, ...)
 {
-int (*pfunc)(va_list);
+int (*pfunc)(va_list, flags_t *);
 const char *p;
 va_list args;
+flags_t flags = {0, 0, 0};
 
-int count = 0;
+register int count = 0;
 
 va_start(args, format);
 if (!format || (format[0] == '%' && !format[1]))
@@ -29,8 +30,12 @@ if (*p == '%')
 count += _putchar('%');
 continue;
 }
+while (get_flag(*p, &flags))
+p++;
 pfunc = get_func(*p);
-count += pfunc ? pfunc(args) : _printf("%%%c", *p);
+count += (pfunc)
+? pfunc(args, &flags)
+: _printf("%%%c", *p);
 }
 else
 count += _putchar(*p);
