@@ -32,6 +32,9 @@ continue;
 }
 while (get_flag(*p, &flags))
 p++;
+p = get_width(p, &flags, arguments);
+if (get_modifier(p, &flags))
+p++;
 pfunc = get_print(*p);
 count += (pfunc)
 ? pfunc(arguments, &flags)

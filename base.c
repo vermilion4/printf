@@ -30,9 +30,17 @@ return (_puts(str));
 int print_octal(va_list l, flags_t *f)
 {
 unsigned int num = va_arg(l, unsigned int);
-char *str = convert(num, 8, 0);
+char *str;
 int count = 0;
 
+if (f->l_modifier)
+num = (unsigned long)va_arg(l, unsigned long);
+else if (f->h_modifier)
+num = (unsigned short int)va_arg(l, unsigned int);
+else
+num = (unsigned int)va_arg(l, unsigned int);
+
+str = convert(num, 8, 0);
 if (f->hash == 1 && str[0] != '0')
 count += _putchar('0');
 count += _puts(str);
@@ -52,9 +60,17 @@ return (count);
 int print_hex(va_list l, flags_t *f)
 {
 unsigned int num = va_arg(l, unsigned int);
-char *str = convert(num, 16, 1);
+char *str;
 int count = 0;
 
+if (f->l_modifier)
+num = (unsigned long)va_arg(l, unsigned long);
+else if (f->h_modifier)
+num = (unsigned short int)va_arg(l, unsigned int);
+else
+num = (unsigned int)va_arg(l, unsigned int);
+
+str = convert(num, 16, 0);
 if (f->hash == 1 && str[0] != '0')
 count += _puts("0x");
 count += _puts(str);
@@ -74,9 +90,17 @@ return (count);
 int print_hex_big(va_list l, flags_t *f)
 {
 unsigned int num = va_arg(l, unsigned int);
-char *str = convert(num, 16, 0);
+char *str;
 int count = 0;
 
+if (f->l_modifier)
+num = (unsigned long)va_arg(l, unsigned long);
+else if (f->h_modifier)
+num = (unsigned short int)va_arg(l, unsigned int);
+else
+num = (unsigned int)va_arg(l, unsigned int);
+
+str = convert(num, 16, 1);
 if (f->hash == 1 && str[0] != '0')
 count += _puts("0X");
 count += _puts(str);

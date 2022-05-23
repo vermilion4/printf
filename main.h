@@ -16,6 +16,11 @@ typedef struct flags
 int plus;
 int space;
 int hash;
+int minus;
+int zero;
+unsigned int width;
+unsigned int h_modifier : 1;
+unsigned int l_modifier : 1;
 } flags_t;
 
 /**
@@ -49,5 +54,8 @@ int print_hex(va_list l, flags_t *f);
 int print_hex_big(va_list l, flags_t *f);
 int print_bigS(va_list l, flags_t *f);
 int print_address(va_list l, flags_t *f);
+int get_modifier(char *s, flags_t *f);
+char *get_width(char *s, flags_t *f, va_list ap);
+int _isdigit(int c);
 
 #endif

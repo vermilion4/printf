@@ -12,6 +12,13 @@ int print_int(va_list l, flags_t *f)
 int n = va_arg(l, int);
 int res = count_digit(n);
 
+if (f->l_modifier)
+n = (long)va_arg(l, long);
+else if (f->h_modifier)
+n = (short int)va_arg(l, int);
+else
+n = (int)va_arg(l, int);
+
 if (f->space == 1 && f->plus == 0 && n >= 0)
 res += _putchar(' ');
 if (f->plus == 1 && n >= 0)
@@ -32,8 +39,16 @@ return (res);
 int print_unsigned(va_list l, flags_t *f)
 {
 unsigned int u = va_arg(l, unsigned int);
-char *str = convert(u, 10, 0);
+char *str;
 
+if (f->l_modifier)
+u = (unsigned long)va_arg(l, unsigned long);
+else if (f->h_modifier)
+u = (unsigned short int)va_arg(l, unsigned int);
+else
+u = (unsigned int)va_arg(l, unsigned int);
+
+str = convert(u, 10, 0);
 (void)f;
 return (_puts(str));
 }
@@ -81,4 +96,15 @@ u /= 10;
 d++;
 }
 return (d);
+}
+
+/**
+ * _isdigit - checks if character is digit
+ * @c: the character to check
+ *
+ * Return: 1 if digit, 0 otherwise
+ */
+int _isdigit(int c)
+{
+	return (c >= '0' && c <= '9');
 }
