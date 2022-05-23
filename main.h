@@ -57,5 +57,6 @@ int print_address(va_list l, flags_t *f);
 int get_modifier(char *s, flags_t *f);
 char *get_width(char *s, flags_t *f, va_list ap);
 int _isdigit(int c);
+int print_rot13(va_list l, flags_t *f);
 
 #endif
