@@ -22,9 +22,10 @@ ph func_arr[] = {
 {'b', print_binary},
 {'o', print_octal},
 {'x', print_hex},
-{'X', print_hex_big}
+{'X', print_hex_big},
+{'S', print_bigS}
 };
-int flags = 10;
+int flags = 11;
 
 register int i;
 
