@@ -19,9 +19,12 @@ ph func_arr[] = {
 {'i', print_int},
 {'d', print_int},
 {'u', print_unsigned},
-{'b', print_binary}
+{'b', print_binary},
+{'o', print_octal},
+{'x', print_hex},
+{'X', print_hex_big}
 };
-int flags = 7;
+int flags = 10;
 
 register int i;
 
