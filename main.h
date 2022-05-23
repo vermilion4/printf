@@ -19,8 +19,8 @@ int hash;
 int minus;
 int zero;
 unsigned int width;
-unsigned int h_modifier : 1;
-unsigned int l_modifier : 1;
+unsigned int h_modifier;
+unsigned int l_modifier;
 } flags_t;
 
 /**
