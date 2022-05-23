@@ -24,9 +24,10 @@ ph func_arr[] = {
 {'x', print_hex},
 {'X', print_hex_big},
 {'S', print_bigS},
-{'p', print_address}
+{'p', print_address},
+{'R', print_rot13}
 };
-int flags = 12;
+int flags = 13;
 
 register int i;
 
