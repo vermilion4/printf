@@ -18,9 +18,10 @@ ph func_arr[] = {
 {'%', print_percent},
 {'i', print_int},
 {'d', print_int},
-{'u', print_unsigned}
+{'u', print_unsigned},
+{'b', print_binary}
 };
-int flags = 6;
+int flags = 7;
 
 register int i;
 
